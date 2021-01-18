@@ -25,9 +25,18 @@ public class UserService {
 		return list.stream().map(x -> new UserDTO(x)).collect(Collectors.toList());
 	}
 
+	@Transactional(readOnly = true)
 	public UserDTO findByCodigo(Long codigo) {	
 		Optional<User> obj = repository.findById(codigo);
 		User entity = obj.orElseThrow(() -> new EntityNotFoundException("Error na Busca por codigo"));
+		return new UserDTO(entity);
+	}
+	
+	@Transactional
+	public UserDTO insert(UserDTO dto) {
+		User entity = new User();
+		entity.setName(dto.getName());
+		entity = repository.save(entity);
 		return new UserDTO(entity);
 	}
 
