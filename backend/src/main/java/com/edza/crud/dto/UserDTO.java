@@ -7,13 +7,13 @@ import com.edza.crud.entities.User;
 public class UserDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private int codigo;
+	private Long codigo;
 	private String name;
 	
 	public UserDTO() {
 	}
 
-	public UserDTO(int codigo, String name) {
+	public UserDTO(Long codigo, String name) {
 		this.codigo = codigo;
 		this.name = name;
 	}
@@ -23,11 +23,11 @@ public class UserDTO implements Serializable {
 		this.name = entity.getName();
 	}
 	
-	public int getCodigo() {
+	public Long getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(int codigo) {
+	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
 
